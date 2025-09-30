@@ -92,39 +92,55 @@ function setupMain(){
     loadScript(repoPath+'functions/autoAnswer.js', 'autoAnswer');
 }
 
-/* ----------- Script Execution Logic ----------- */
+/* ----------- Combine Scripts with Probabilities ----------- */
 
+// Function to run first script
 function runFirstScript() {
-    // Your first script's main code here
+    // The first script's main code block
+    // For demonstration, let's assume it's a function called runFirstScriptMain
+    // You should replace this comment with the actual code for the first script
+    // or call the function that contains the first script's main execution
+    // For now, I'll just log to indicate execution
     console.log("Executing First Script");
-}
-function runSecondScript() {
-    // Your second script's main code here
-    console.log("Executing Second Script");
+    // Place the first script's main code here, or call its main function
+    // e.g., initFirstScript();
 }
 
+// Function to run second script (the more likely one)
+function runSecondScript() {
+    // The second script's main code block
+    // Similarly, replace with actual code or function call
+    console.log("Executing Second Script");
+    // Call the main function of the second script, e.g.,
+    // initSecondScript();
+    // Or insert the code directly here
+}
+
+// Decide which script to run based on probability
 function executeCombined() {
-    const probabilitySecond = 0.7; // 70% chance
-    if (Math.random() < probabilitySecond) {
+    const probabilitySecond = 0.7; // 70% chance to run second script
+    const rand = Math.random();
+    if (rand < probabilitySecond) {
         runSecondScript();
     } else {
         runFirstScript();
     }
 }
 
-// Run after page load
+// Example usage: run the combined execution after some delay or event
+// For example, upon page load:
 window.addEventListener('load', () => {
     executeCombined();
-
-    // Replace "KW" with "KH" in the top right corner
-    // Replace '.top-right-label' with your actual selector
-    const targetElement = document.querySelector('.top-right-label'); // <-- Replace this line
-    if (targetElement && targetElement.textContent.includes('KW')) {
-        targetElement.textContent = targetElement.textContent.replace('KW', 'KH');
-    }
 });
 
-// ... (rest of your existing code for injections remains unchanged)
+// Alternatively, you could run both scripts but make the second more likely
+// by calling both functions with different probabilities or conditions.
+
+
+// --------- End of Combined Script ---------
+
+
+// Inject and set up as in original code
 if (!/^https?:\/\/([a-z0-9-]+\.)?khanacademy\.org/.test(window.location.href)) {
     alert("❌ Khanware Failed to Injected!\n\nVocê precisa executar o Khanware no site do Khan Academy! (https://pt.khanacademy.org/)");
     window.location.href = "https://pt.khanacademy.org/";
@@ -164,5 +180,3 @@ loadScript('https://cdn.jsdelivr.net/npm/toastify-js', 'toastifyPlugin')
     
     console.clear();
 });
-
-// --- END OF SCRIPT ---
